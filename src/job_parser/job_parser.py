@@ -52,6 +52,19 @@ class Job:
             'employment_type': None,
             'job_function': None
         }
+        
+        # Update url
+        # When copying a link from LikendId as seen in browser, requests cannot access the info
+        # The correct url for requests is 'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/[JOB_ID]'
+        posting_url = 'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/'
+        if url.startswith('https://www.linkedin.com/jobs/view/'):
+            # Extract job ID and fix URL
+            job_id = url.replace('https://www.linkedin.com/jobs/view/', '').replace('/', '')
+            url = posting_url + job_id
+        elif url.startswith('https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/'):
+            pass
+        else:
+            pass
 
         # Get the job details
         response = requests.get(url)

@@ -38,9 +38,28 @@ def read_yaml(path: str) -> dict:
 
     return config_data
 
+### ---------------------------------------- ###
+
+def print_header_art(return_string_only: bool=False):
+
+    header = """
+┏━┳━━━━┳━━━━┳━━━━┳━━━━┳━━━━┓
+┃ ┗━━┛ ┗━━┛ ┗━━┛ ┗━━┛ ┗━━┛ ┃
+┃ >>> RESUME EVALUATOR <<< ┃
+┃ ┏━━┓ ┏━━┓ ┏━━┓ ┏━━┓ ┏━━┓ ┃
+┗━━━━┻━━━━┻━━━━┻━━━━┻━━━━┻━┛
+"""
+    if return_string_only:
+        return header.strip()
+    else:
+        print(header.strip())
+
 ### MAIN ----------------------------------- ###
 
 if __name__ == "__main__":
+    
+    # Header art
+    print_header_art()
     
     # Init exectution toggle
     exec_toggle = True
@@ -95,7 +114,8 @@ if __name__ == "__main__":
             markdown_report = format_report(evaluated_job)
             # Save to markdown
             log_trace(trace_message='Saving job report')
-            timestamp = datetime.now().strftime("%Y-%m-%d")
-            with open(f'job_report_{timestamp}.md', 'w') as md_out:
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H.%M")
+            report_name = f'job_report_{job.job_details["title"]}_{job.job_details["company"]}_{timestamp}.md'.replace(' ', '')
+            with open(report_name, 'w') as md_out:
                 md_out.write(markdown_report)
             log_trace(trace_message='Task completed')
