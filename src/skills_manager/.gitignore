@@ -1,0 +1,5 @@
+.vscode
+.DS_Store
+__pycache__
+evaluated_jobs_*.md
+job_hits_*.yaml

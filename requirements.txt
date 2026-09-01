@@ -1,0 +1,7 @@
+matplotlib
+numpy
+pandas
+ollama
+pandas
+requests
+typing_extensions

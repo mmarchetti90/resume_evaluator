@@ -1,0 +1,9 @@
+resume:
+  path: resume/resume.md
+text_generation:
+  model: qwen3.5:4b
+  max_new_tokens: 1024
+text_embedding:
+  model: qwen3-embedding:0.6b
+skills:
+  skills_dir: path/to/src/skills
