@@ -59,7 +59,8 @@ class Job:
         posting_url = 'https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/'
         if url.startswith('https://www.linkedin.com/jobs/view/'):
             # Extract job ID and fix URL
-            job_id = url.replace('https://www.linkedin.com/jobs/view/', '').replace('/', '')
+            #job_id = url.replace('https://www.linkedin.com/jobs/view/', '').replace('/', '')
+            job_id = url.replace('https://www.linkedin.com/jobs/view/', '').split('/')[0]
             url = posting_url + job_id
         elif url.startswith('https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/'):
             pass
